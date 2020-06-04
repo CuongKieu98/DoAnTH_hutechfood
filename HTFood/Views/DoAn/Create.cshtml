@@ -1,0 +1,184 @@
+﻿@model HTFood.Models.DoAn
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<link href="~/assets/css/create.css" rel="stylesheet" />
+<title>Thêm mới đồ ăn</title>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <!--Header-->
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-7">
+                    <h2>Thêm mới đồ ăn</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","DoAn")">Đồ ăn</a></li>
+                        <li class="breadcrumb-item active">Thêm mới đồ ăn</li>
+                    </ul>
+
+                </div>
+            </div>
+            <!--/Header-->
+            @using (Html.BeginForm("Create", "DoAn", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>Thêm mới sản phẩm</h2>
+                                <ul class="header-dropdown m-r--5">
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more-vert"></i> </a>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li><a href="javascript:void(0);">Action</a></li>
+                                            <li><a href="javascript:void(0);">Another action</a></li>
+                                            <li><a href="javascript:void(0);">Something else</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="body">
+                                <form id="form_validation" method="POST" novalidate="novalidate">
+                                    <div class="row clearfix">
+                                        <div class="col col-4">
+                                            <div class="form-group form-float">
+
+                                                <div class="form-line">
+
+                                                    <input type="text" value="" class="form-control" name="TenDA" required="" aria-required="true">
+                                                    <label class="form-label">Tên sản phẩm:</label>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col col-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" class="form-control" value="" name="DonGia" required="" aria-required="true">
+                                                    <label class="form-label">Đơn giá:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col-4">
+                                            <h8>Trạng thái sản phẩm:</h8>
+                                            <div class="form-group">
+                                                <input type="radio" value="Mở bán" name="TrangThaiDA" id="open" class="with-gap">
+                                                <label for="open">Mở bán</label>
+                                                <input type="radio" value="Tạm đóng" name="TrangThaiDA" id="off" class="with-gap">
+                                                <label for="off" class="m-l-20">Tạm đóng</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col col-4">
+                                            <div class="form-group form-float">
+
+                                                <div class="form-line">
+                                                    <input type="number" class="form-control" value="" name="SoLuongTon" required="" aria-required="true">
+                                                    <label class="form-label">Số lượng:</label>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col col-4">
+
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" value="" name="DanhGiaDoAn" required="" aria-required="true">
+                                                    <label class="form-label">Đánh giá:</label>
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                        <div class="col col-4">
+                                            <label>Hình sản phẩm</label> <c style="color:red; text-decoration:underline">@ViewBag.Thongbao</c><br>
+                                            <div class="input-group" style="margin: 15px 0px;">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="inputGroupFileAddon01">Tải lên</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                           aria-describedby="inputGroupFileAddon01" name="fileupload">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Chọn file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+
+                                        <div class="col col-4">
+
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" value="" name="MaDM" required="" aria-required="true">
+                                                    <label class="form-label">Danh mục:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         
+                                        
+                                        
+                                        <div class="col col-4">
+                                            <p>Ngày update:</p>
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="date" class="form-control" value="" name="NgayCapNhat" required="" aria-required="true">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col col-12">
+                                            <label class="label icon-field" style="color: white;background-color:#007bff;font-weight: bold">Mô tả</label><br>
+                                            <div id="input-text">
+                                                <textarea name="Mota" type="text" class="text"></textarea>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+
+
+                                    <input class="btn btn-raised bg-light-blue waves-effect" type="submit" value="Thêm mới" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!--content-->
+            <!--/content-->
+        </div>
+    </div>
+</section>
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+
+<script src="~/assets/bundles/libscripts.bundle.js"></script>
+<script src="~/assets/plugins/jquery-validation/jquery.validate.js"></script>
+<script src="~/assets/bundles/mainscripts.bundle.js"></script>
+<script src="~/assets/js/pages/forms/form-validation.js"></script>
+
